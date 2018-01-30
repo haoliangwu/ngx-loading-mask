@@ -4,6 +4,7 @@ import { LoadingSnipComponent } from './loading-snip.component'
 import { LoadingMaskDirective } from './loading-mask.directive'
 import { Config } from './model/config'
 import { CONFIG, DEFAULT_CONFIG } from './config'
+import { LoadingMaskService } from './loading-mask.service'
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ export class LoadingMaskModule {
     return {
       ngModule: LoadingMaskModule,
       providers: [
+        LoadingMaskService,
         {
           useValue: config,
           provide: CONFIG

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'
+import { LoadingMaskService } from './loading-mask/loading-mask.service'
 
 @Component({
   selector: 'ngx-root',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ngx-loading-mask';
+  title = 'ngx-loading-mask'
+
+  constructor(
+    public service: LoadingMaskService
+  ) {
+
+  }
 }
