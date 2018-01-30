@@ -2,7 +2,6 @@ import { Component, OnInit, Inject, Input, ViewEncapsulation, Optional } from '@
 import { ClsMapping, Config } from './model/config'
 import { CONFIG } from './config'
 import { LoadingMaskDirective } from './loading-mask.directive'
-import { LoadingMaskService } from './loading-mask.service';
 
 @Component({
   selector: 'ngx-loading-snip',
@@ -40,8 +39,7 @@ export class LoadingSnipComponent implements OnInit {
 
   constructor(
     @Inject(CONFIG) private config: Config,
-    @Optional() private mask: LoadingMaskDirective,
-    private serivice: LoadingMaskService
+    @Optional() private mask: LoadingMaskDirective
   ) { }
 
   ngOnInit() {

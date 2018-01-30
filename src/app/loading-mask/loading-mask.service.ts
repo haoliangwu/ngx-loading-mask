@@ -1,6 +1,5 @@
-import { Injectable, ApplicationRef, ComponentFactoryResolver, Injector } from '@angular/core'
+import { Injectable} from '@angular/core'
 import { LoadingMaskGroupMap, LoadingMaskGroup } from './model/mask'
-import { LoadingSnipComponent } from './loading-snip.component'
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject'
 import { LoadingEvent, LoadingStatus } from './model/event'

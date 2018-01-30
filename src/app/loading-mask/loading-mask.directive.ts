@@ -1,4 +1,4 @@
-import { Directive, Input, forwardRef, Inject, ComponentFactoryResolver, ApplicationRef, Injector, Host, ElementRef } from '@angular/core'
+import { Directive, Input, ComponentFactoryResolver, ApplicationRef, Injector, Host, ElementRef } from '@angular/core'
 import { LoadingMaskService } from './loading-mask.service'
 import { OnInit, OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks'
 import { Subscription } from 'rxjs/Subscription'
@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable'
 import { LoadingEvent, LoadingStatus } from './model/event'
 import { LoadingMaskGroup } from './model/mask'
 
-import { ComponentType, Portal, ComponentPortal, DomPortalHost } from '@angular/cdk/portal'
+import { ComponentPortal, DomPortalHost } from '@angular/cdk/portal'
 import { LoadingSnipComponent } from './loading-snip.component'
 
 
@@ -27,7 +27,7 @@ export class LoadingMaskDirective implements OnInit, OnDestroy {
   private portalHostEl: HTMLElement
 
   constructor(
-    @Inject(forwardRef(() => LoadingMaskService)) private service: LoadingMaskService,
+    private service: LoadingMaskService,
     private componentFactoryResolver: ComponentFactoryResolver,
     private appRef: ApplicationRef,
     private injector: Injector,
