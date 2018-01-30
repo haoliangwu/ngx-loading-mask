@@ -15,7 +15,6 @@ import { LoadingMaskService } from './loading-mask.service'
     LoadingMaskDirective
   ],
   exports: [
-    LoadingSnipComponent,
     LoadingMaskDirective
   ],
   entryComponents: [

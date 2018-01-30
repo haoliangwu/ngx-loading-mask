@@ -8,9 +8,16 @@
     "build": "ng build --prod",
     "test": "ng test -sm=false",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "package": "ng-packagr -p package.json"
   },
-  "private": true,
+  "private": false,
+  "ngPackage": {
+    "lib": {
+      "entryFile": "src/app/loading-mask/loading-mask.module.ts",
+      "languageLevel": [ "dom", "es2017" ]
+    }
+  },
   "dependencies": {
     "@angular/animations": "^5.0.0",
     "@angular/cdk": "^5.1.1",
@@ -49,5 +56,16 @@
     "ts-node": "~3.2.0",
     "tslint": "~5.7.0",
     "typescript": "~2.4.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/haoliangwu/ngx-loading-mask"
+  },
+  "bugs": {
+    "url": "https://github.com/haoliangwu/ngx-loading-mask/issues"
+  },
+  "author": {
+    "name": "haoliangwu",
+    "url": "https://github.com/haoliangwu"
   }
 }
