@@ -7,7 +7,7 @@ export const DEFAULT_CONFIG: Config = {
     size: 144
   },
   mask: {
-    bgColor: 'rgba(0, 0, 0, .12)'
+    bgColor: 'rgba(255, 255, 255, .7)'
   },
   clsMapping: {
     mask: 'ngx-loading-mask',
