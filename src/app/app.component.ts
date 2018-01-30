@@ -11,7 +11,21 @@ export class AppComponent {
 
   constructor(
     public service: LoadingMaskService
-  ) {
+  ) { }
 
+  togglePending(groupName: string) {
+    this.service.showGroup(groupName)
+
+    setTimeout(() => {
+      this.toggleDone(groupName)
+    }, 3000)
+  }
+
+  toggleDone(groupName: string) {
+    this.service.hideGroup(groupName)
+  }
+
+  toggleError(groupName: string) {
+    this.service.hideGroupError(groupName)
   }
 }

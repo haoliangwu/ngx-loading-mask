@@ -1,19 +1,43 @@
-import { Injectable } from '@angular/core'
+import { Injectable, ApplicationRef, ComponentFactoryResolver, Injector } from '@angular/core'
 import { LoadingMaskGroupMap, LoadingMaskGroup } from './model/mask'
+import { LoadingSnipComponent } from './loading-snip.component'
+
+import { BehaviorSubject } from 'rxjs/BehaviorSubject'
+import { LoadingEvent, LoadingStatus } from './model/event'
+import { Observable } from 'rxjs/Observable'
+import { filter } from 'rxjs/operators'
+
+export const DEFAULT_MASK_GROUP = 'default_mask_group'
 
 @Injectable()
 export class LoadingMaskService {
   private uuid = 1
   private maskGroupMap: LoadingMaskGroupMap
 
-  constructor() {
+  private loadingEvent$ = new BehaviorSubject<LoadingEvent>({
+    id: '__init__',
+    status: LoadingStatus.INIT
+  })
+
+  constructor(
+  ) {
     this.bootstrap()
+  }
+
+  subscribe(groupName: string = DEFAULT_MASK_GROUP): Observable<LoadingEvent> {
+    return this.loadingEvent$.pipe(
+      filter(e => e.id === groupName)
+    )
   }
 
   /*
    * register group instance
    */
-  register(groupName: string = 'default_mask_group', replace = false): LoadingMaskGroup {
+  register(groupName: string = DEFAULT_MASK_GROUP, replace = false): LoadingMaskGroup {
+    if (groupName.length === 0) {
+      groupName = DEFAULT_MASK_GROUP
+    }
+
     let group: LoadingMaskGroup
 
     if (this.isDefaultGroup(groupName)) {
@@ -50,7 +74,7 @@ export class LoadingMaskService {
    * if groupName is default group name
    */
   isDefaultGroup(groupName: string): boolean {
-    return groupName === 'default_mask_group'
+    return groupName === DEFAULT_MASK_GROUP
   }
 
   /*
@@ -87,9 +111,28 @@ export class LoadingMaskService {
     return group
   }
 
+  showGroup(groupName: string = DEFAULT_MASK_GROUP) {
+    this.loadingEvent$.next(this.loadingEventFactory(groupName, LoadingStatus.PENDING))
+  }
+
+  hideGroup(groupName: string = DEFAULT_MASK_GROUP) {
+    this.loadingEvent$.next(this.loadingEventFactory(groupName, LoadingStatus.DONE))
+  }
+
+  hideGroupError(groupName: string = DEFAULT_MASK_GROUP) {
+    this.loadingEvent$.next(this.loadingEventFactory(groupName, LoadingStatus.ERROR))
+  }
+
   private bootstrap(): void {
     this.maskGroupMap = new Map()
-    this.setGroup('default_mask_group', true)
+    this.setGroup(DEFAULT_MASK_GROUP, true)
+  }
+
+  private loadingEventFactory(groupName: string, status: LoadingStatus): LoadingEvent {
+    return {
+      id: groupName,
+      status
+    }
   }
 
   private maskGroupFactory(groupName: string): LoadingMaskGroup {

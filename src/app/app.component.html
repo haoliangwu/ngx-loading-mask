@@ -4,6 +4,15 @@
     Welcome to {{ title }}!
   </h1>
   <!-- <ngx-loading-snip></ngx-loading-snip> -->
-  <div class="wrapper" [ngxLoadingMask]="foo"></div>
+  <div class="wrapper" ngxLoadingMask>
+    <button (click)="togglePending('default_mask_group')">default</button>
+    <!-- <button (click)="toggleDone('default_mask_group')">default done</button>
+    <button (click)="toggleError('default_mask_group')">default error</button> -->
+  </div>
+  <div class="wrapper" [ngxLoadingMask]="'foo'">
+    <button (click)="togglePending('foo')">foo</button>
+    <!-- <button (click)="toggleDone('foo')">foo done</button>
+    <button (click)="toggleError('foo')">foo error</button> -->
+  </div>
 </div>
 

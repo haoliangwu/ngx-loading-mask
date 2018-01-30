@@ -17,6 +17,9 @@ import { LoadingMaskService } from './loading-mask.service'
   exports: [
     LoadingSnipComponent,
     LoadingMaskDirective
+  ],
+  entryComponents: [
+    LoadingSnipComponent
   ]
 })
 export class LoadingMaskModule {

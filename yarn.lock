@@ -33,6 +33,12 @@
   dependencies:
     tslib "^1.7.1"
 
+"@angular/cdk@^5.1.1":
+  version "5.1.1"
+  resolved "http://registry.npm.taobao.org/@angular/cdk/download/@angular/cdk-5.1.1.tgz#a278b44ec02145a4691aa466dde06a1ae8c0fe88"
+  dependencies:
+    tslib "^1.7.1"
+
 "@angular/cli@1.6.2":
   version "1.6.2"
   resolved "http://registry.npm.taobao.org/@angular/cli/download/@angular/cli-1.6.2.tgz#cb684e8c1d898d084d9709217c694d35311ec69b"
