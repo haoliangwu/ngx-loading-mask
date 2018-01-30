@@ -13,11 +13,15 @@ export class AppComponent {
     public service: LoadingMaskService
   ) { }
 
-  togglePending(groupName: string) {
+  togglePending(groupName: string, error: string) {
     this.service.showGroup(groupName)
 
     setTimeout(() => {
-      this.toggleDone(groupName)
+      if (error) {
+        this.toggleError(groupName, error)
+      } else {
+        this.toggleDone(groupName)
+      }
     }, 3000)
   }
 
@@ -25,7 +29,7 @@ export class AppComponent {
     this.service.hideGroup(groupName)
   }
 
-  toggleError(groupName: string) {
-    this.service.hideGroupError(groupName)
+  toggleError(groupName: string, error) {
+    this.service.hideGroupError(groupName, error)
   }
 }

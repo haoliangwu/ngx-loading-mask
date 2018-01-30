@@ -2,6 +2,7 @@ import { Component, OnInit, Inject, Input, ViewEncapsulation, Optional } from '@
 import { ClsMapping, Config } from './model/config'
 import { CONFIG } from './config'
 import { LoadingMaskDirective } from './loading-mask.directive'
+import { LoadingMaskService } from './loading-mask.service';
 
 @Component({
   selector: 'ngx-loading-snip',
@@ -17,7 +18,7 @@ export class LoadingSnipComponent implements OnInit {
   @Input() bgColor: string
 
   get maskCls() {
-    return [this.cls.mask, !!this.mask ? '' : 'global']
+    return [this.cls.mask, this.mask.isDefault ? 'global' : '']
   }
 
   get maskStyle() {
@@ -39,7 +40,8 @@ export class LoadingSnipComponent implements OnInit {
 
   constructor(
     @Inject(CONFIG) private config: Config,
-    @Optional() private mask: LoadingMaskDirective
+    @Optional() private mask: LoadingMaskDirective,
+    private serivice: LoadingMaskService
   ) { }
 
   ngOnInit() {

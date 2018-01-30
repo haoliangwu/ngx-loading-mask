@@ -7,5 +7,6 @@ export enum LoadingStatus {
 
 export interface LoadingEvent {
   id: string,
-  status: LoadingStatus
+  status: LoadingStatus,
+  data?: any
 }

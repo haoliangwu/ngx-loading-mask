@@ -119,8 +119,8 @@ export class LoadingMaskService {
     this.loadingEvent$.next(this.loadingEventFactory(groupName, LoadingStatus.DONE))
   }
 
-  hideGroupError(groupName: string = DEFAULT_MASK_GROUP) {
-    this.loadingEvent$.next(this.loadingEventFactory(groupName, LoadingStatus.ERROR))
+  hideGroupError(groupName: string = DEFAULT_MASK_GROUP, error: any) {
+    this.loadingEvent$.next(this.loadingEventFactory(groupName, LoadingStatus.ERROR, error))
   }
 
   private bootstrap(): void {
@@ -128,10 +128,11 @@ export class LoadingMaskService {
     this.setGroup(DEFAULT_MASK_GROUP, true)
   }
 
-  private loadingEventFactory(groupName: string, status: LoadingStatus): LoadingEvent {
+  private loadingEventFactory(groupName: string, status: LoadingStatus, data?: any): LoadingEvent {
     return {
       id: groupName,
-      status
+      status,
+      data
     }
   }
 

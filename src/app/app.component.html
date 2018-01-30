@@ -10,7 +10,7 @@
     <button (click)="toggleError('default_mask_group')">default error</button> -->
   </div>
   <div class="wrapper" [ngxLoadingMask]="'foo'">
-    <button (click)="togglePending('foo')">foo</button>
+    <button (click)="togglePending('foo', 'some error happened')">foo</button>
     <!-- <button (click)="toggleDone('foo')">foo done</button>
     <button (click)="toggleError('foo')">foo error</button> -->
   </div>
