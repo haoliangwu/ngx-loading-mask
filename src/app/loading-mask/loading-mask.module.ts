@@ -9,10 +9,19 @@ import { CONFIG, DEFAULT_CONFIG } from './config'
   imports: [
     CommonModule
   ],
-  declarations: [LoadingSnipComponent, LoadingMaskDirective]
+  declarations: [
+    LoadingSnipComponent,
+    LoadingMaskDirective
+  ],
+  exports: [
+    LoadingSnipComponent,
+    LoadingMaskDirective
+  ]
 })
 export class LoadingMaskModule {
-  static forRoot(config: Config = DEFAULT_CONFIG): ModuleWithProviders {
+  static forRoot(config: Config): ModuleWithProviders {
+    config = Object.assign(DEFAULT_CONFIG, config)
+
     return {
       ngModule: LoadingMaskModule,
       providers: [

@@ -12,7 +12,12 @@ import { LoadingMaskModule } from './loading-mask/loading-mask.module'
   ],
   imports: [
     BrowserModule,
-    LoadingMaskModule.forRoot()
+    LoadingMaskModule.forRoot({
+      snippet: {
+        imgUrl: '/assets/ripple.svg',
+        size: 144
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

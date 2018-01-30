@@ -1,8 +1,19 @@
+export interface ClsMapping {
+  snip: string,
+  mask: string
+}
+
 export interface SnippetConfig {
-  bgColor: string,
-  maskCls: string
+  imgUrl: string,
+  size: number
+}
+
+export interface MaskConfig {
+  bgColor: string
 }
 
 export interface Config {
-  snippet: SnippetConfig
+  snippet?: SnippetConfig
+  mask?: MaskConfig,
+  clsMapping?: ClsMapping
 }

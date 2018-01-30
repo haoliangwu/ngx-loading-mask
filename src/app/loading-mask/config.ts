@@ -3,8 +3,15 @@ import { Config } from './model/config'
 
 export const DEFAULT_CONFIG: Config = {
   snippet: {
-    bgColor: 'rgba(0, 0, 0, .12)',
-    maskCls: 'ngx-loading-mask'
+    imgUrl: '/assets/ripple.svg',
+    size: 144
+  },
+  mask: {
+    bgColor: 'rgba(0, 0, 0, .12)'
+  },
+  clsMapping: {
+    mask: 'ngx-loading-mask',
+    snip: 'ngx-loading-snip'
   }
 }
 

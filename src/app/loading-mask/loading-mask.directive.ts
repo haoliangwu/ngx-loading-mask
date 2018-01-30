@@ -1,7 +1,7 @@
 import { Directive } from '@angular/core';
 
 @Directive({
-  selector: '[appLoadingMask]'
+  selector: '[ngxLoadingMask]'
 })
 export class LoadingMaskDirective {
 
