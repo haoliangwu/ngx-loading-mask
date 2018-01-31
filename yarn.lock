@@ -164,12 +164,6 @@
   dependencies:
     tslib "^1.7.1"
 
-"@angular/tsc-wrapped@^4.4.5":
-  version "4.4.6"
-  resolved "http://registry.npm.taobao.org/@angular/tsc-wrapped/download/@angular/tsc-wrapped-4.4.6.tgz#16787cbbf50bdc7e738123b19c32527f244e178d"
-  dependencies:
-    tsickle "^0.21.0"
-
 "@ngtools/json-schema@1.1.0", "@ngtools/json-schema@^1.1.0":
   version "1.1.0"
   resolved "http://registry.npm.taobao.org/@ngtools/json-schema/download/@ngtools/json-schema-1.1.0.tgz#c3a0c544d62392acc2813a42c8a0dc6f58f86922"
@@ -500,10 +494,6 @@ assign-symbols@^1.0.0:
   version "1.0.0"
   resolved "http://registry.npm.taobao.org/assign-symbols/download/assign-symbols-1.0.0.tgz#59667f41fadd4f20ccbc2bb96b8d4f7f78ec0367"
 
-ast-types@0.9.6:
-  version "0.9.6"
-  resolved "http://registry.npm.taobao.org/ast-types/download/ast-types-0.9.6.tgz#102c9e9e9005d3e7e3829bf0c4fa24ee862ee9b9"
-
 async-each@^1.0.0:
   version "1.0.1"
   resolved "http://registry.npm.taobao.org/async-each/download/async-each-1.0.1.tgz#19d386a1d9edc6e7c1c85d388aedbcc56d33602d"
@@ -516,7 +506,7 @@ async@^1.4.0, async@^1.5.2:
   version "1.5.2"
   resolved "http://registry.npm.taobao.org/async/download/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
 
-async@^2.0.0-rc.5, async@^2.1.2, async@^2.1.4, async@^2.1.5, async@^2.4.1, async@^2.5.0:
+async@^2.1.2, async@^2.1.4, async@^2.1.5, async@^2.4.1, async@^2.5.0:
   version "2.6.0"
   resolved "http://registry.npm.taobao.org/async/download/async-2.6.0.tgz#61a29abb6fcc026fea77e56d1c6ec53a795951f4"
   dependencies:
@@ -1118,7 +1108,7 @@ clone@^0.2.0:
   version "0.2.0"
   resolved "http://registry.npm.taobao.org/clone/download/clone-0.2.0.tgz#c6126a90ad4f72dbf5acdb243cc37724fe93fc1f"
 
-clone@^1.0.0, clone@^1.0.2, clone@~1.0.2:
+clone@^1.0.0, clone@^1.0.2:
   version "1.0.3"
   resolved "http://registry.npm.taobao.org/clone/download/clone-1.0.3.tgz#298d7e2231660f40c003c2ed3140decf3f53085f"
 
@@ -1214,7 +1204,7 @@ commander@2.12.x:
   version "2.12.2"
   resolved "http://registry.npm.taobao.org/commander/download/commander-2.12.2.tgz#0f5946c427ed9ec0d91a46bb9def53e54650e555"
 
-commander@^2.11.0, commander@^2.9.0, commander@~2.13.0:
+commander@^2.12.0, commander@^2.9.0, commander@~2.13.0:
   version "2.13.0"
   resolved "http://registry.npm.taobao.org/commander/download/commander-2.13.0.tgz#6964bca67685df7c1f1430c584f07d7597885b9c"
 
@@ -2057,13 +2047,6 @@ es6-symbol@3.1.1, es6-symbol@^3.1.1, es6-symbol@~3.1.1:
     d "1"
     es5-ext "~0.10.14"
 
-es6-templates@~0.2.2:
-  version "0.2.3"
-  resolved "http://registry.npm.taobao.org/es6-templates/download/es6-templates-0.2.3.tgz#5cb9ac9fb1ded6eb1239342b81d792bbb4078ee4"
-  dependencies:
-    recast "~0.11.12"
-    through "~2.3.6"
-
 es6-weak-map@^2.0.1:
   version "2.0.2"
   resolved "http://registry.npm.taobao.org/es6-weak-map/download/es6-weak-map-2.0.2.tgz#5e3ab32251ffd1538a1f8e5ffa1357772f92d96f"
@@ -2097,10 +2080,6 @@ esprima@^2.6.0:
 esprima@^4.0.0:
   version "4.0.0"
   resolved "http://registry.npm.taobao.org/esprima/download/esprima-4.0.0.tgz#4499eddcd1110e0b218bacf2fa7f7f59f55ca804"
-
-esprima@~3.1.0:
-  version "3.1.3"
-  resolved "http://registry.npm.taobao.org/esprima/download/esprima-3.1.3.tgz#fdca51cee6133895e3c88d535ce49dbff62a4633"
 
 esrecurse@^4.1.0:
   version "4.2.0"
@@ -2418,6 +2397,10 @@ find-index@^0.1.1:
   version "0.1.1"
   resolved "http://registry.npm.taobao.org/find-index/download/find-index-0.1.1.tgz#675d358b2ca3892d795a1ab47232f8b6e2e0dde4"
 
+find-parent-dir@^0.3.0:
+  version "0.3.0"
+  resolved "http://registry.npm.taobao.org/find-parent-dir/download/find-parent-dir-0.3.0.tgz#33c44b429ab2b2f0646299c5f9f718f376ff8d54"
+
 find-up@^1.0.0:
   version "1.1.2"
   resolved "http://registry.npm.taobao.org/find-up/download/find-up-1.1.2.tgz#6b2e9822b1a2ce0a60ab64d610eccad53cb24d0f"
@@ -2540,9 +2523,17 @@ fs-access@^1.0.0:
   dependencies:
     null-check "^1.0.0"
 
-fs-extra@^4.0.0, fs-extra@^4.0.2:
+fs-extra@^4.0.0:
   version "4.0.3"
   resolved "http://registry.npm.taobao.org/fs-extra/download/fs-extra-4.0.3.tgz#0d852122e5bc5beb453fb028e9c0c9bf36340c94"
+  dependencies:
+    graceful-fs "^4.1.2"
+    jsonfile "^4.0.0"
+    universalify "^0.1.0"
+
+fs-extra@^5.0.0:
+  version "5.0.0"
+  resolved "http://registry.npm.taobao.org/fs-extra/download/fs-extra-5.0.0.tgz#414d0110cdd06705734d055652c5411260c31abd"
   dependencies:
     graceful-fs "^4.1.2"
     jsonfile "^4.0.0"
@@ -2868,18 +2859,6 @@ gulp-gh-pages@^0.5.4:
     vinyl-fs "^2.2.1"
     wrap-promise "^1.0.1"
 
-gulp-inline-ng2-template@^4.0.0:
-  version "4.1.0"
-  resolved "http://registry.npm.taobao.org/gulp-inline-ng2-template/download/gulp-inline-ng2-template-4.1.0.tgz#61fab59a66945c37a0c4838b5e793d6708e91dfd"
-  dependencies:
-    async "^2.0.0-rc.5"
-    clone "~1.0.2"
-    es6-templates "~0.2.2"
-    extend "~3.0.0"
-    gulp-util "~3.0.6"
-    isarray "0.0.1"
-    through2 "~2.0.0"
-
 gulp-sourcemaps@1.6.0:
   version "1.6.0"
   resolved "http://registry.npm.taobao.org/gulp-sourcemaps/download/gulp-sourcemaps-1.6.0.tgz#b86ff349d801ceb56e1d9e7dc7bbcb4b7dee600c"
@@ -2890,7 +2869,7 @@ gulp-sourcemaps@1.6.0:
     through2 "^2.0.0"
     vinyl "^1.0.0"
 
-gulp-util@^3.0.0, gulp-util@^3.0.7, gulp-util@~3.0.6:
+gulp-util@^3.0.0, gulp-util@^3.0.7:
   version "3.0.8"
   resolved "http://registry.npm.taobao.org/gulp-util/download/gulp-util-3.0.8.tgz#0054e1e744502e27c04c187c3ecc505dd54bbb4f"
   dependencies:
@@ -3309,6 +3288,10 @@ inherits@2.0.1:
 ini@^1.3.4, ini@~1.3.0:
   version "1.3.5"
   resolved "http://registry.npm.taobao.org/ini/download/ini-1.3.5.tgz#eee25f56db1c9ec6085e0c22778083f596abf927"
+
+injection-js@^2.2.1:
+  version "2.2.1"
+  resolved "http://registry.npm.taobao.org/injection-js/download/injection-js-2.2.1.tgz#a8d6a085b2f0b8d8650f6f4487f6abb8cc0d67ce"
 
 internal-ip@1.2.0:
   version "1.2.0"
@@ -4536,33 +4519,31 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "http://registry.npm.taobao.org/negotiator/download/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
-ng-packagr@^1.6.0:
-  version "1.6.0"
-  resolved "http://registry.npm.taobao.org/ng-packagr/download/ng-packagr-1.6.0.tgz#935ff56b070925376df840bb87d4e64e0aeb1cf5"
+ng-packagr@^2.0.0-rc.12:
+  version "2.0.0-rc.12"
+  resolved "http://registry.npm.taobao.org/ng-packagr/download/ng-packagr-2.0.0-rc.12.tgz#1c413382adefe28b7a64dc10b1ae0f92a9cf09ab"
   dependencies:
-    "@angular/tsc-wrapped" "^4.4.5"
     "@ngtools/json-schema" "^1.1.0"
     autoprefixer "^7.1.1"
     browserslist "^2.1.5"
-    commander "^2.11.0"
+    commander "^2.12.0"
     cpx "^1.5.0"
-    fs-extra "^4.0.2"
+    fs-extra "^5.0.0"
     glob "^7.1.2"
-    gulp-inline-ng2-template "^4.0.0"
+    injection-js "^2.2.1"
     less "^2.7.2"
-    lodash "^4.17.4"
     node-sass "^4.5.3"
+    node-sass-tilde-importer "^1.0.0"
     postcss "^6.0.2"
-    read-file "^0.2.0"
+    postcss-url "^7.3.0"
     rimraf "^2.6.1"
-    rollup "^0.51.0"
+    rollup "^0.53.0"
     rollup-plugin-commonjs "^8.2.1"
     rollup-plugin-node-resolve "^3.0.0"
+    rxjs "^5.5.0"
     sorcery "^0.10.0"
     stylus "^0.54.5"
-    ts-node "^3.0.4"
     uglify-js "^3.0.7"
-    vinyl-fs "^2.4.4"
 
 ng-zorro-antd@^0.6.13:
   version "0.6.13"
@@ -4647,6 +4628,12 @@ node-pre-gyp@^0.6.39:
     semver "^5.3.0"
     tar "^2.2.1"
     tar-pack "^3.4.0"
+
+node-sass-tilde-importer@^1.0.0:
+  version "1.0.1"
+  resolved "http://registry.npm.taobao.org/node-sass-tilde-importer/download/node-sass-tilde-importer-1.0.1.tgz#3eab5247a3bf53354766bb1e6fd2214ce17e74ee"
+  dependencies:
+    find-parent-dir "^0.3.0"
 
 node-sass@^4.3.0, node-sass@^4.5.3:
   version "4.7.2"
@@ -5403,7 +5390,7 @@ postcss-unique-selectors@^2.0.2:
     postcss "^5.0.4"
     uniqs "^2.0.0"
 
-postcss-url@^7.1.2:
+postcss-url@^7.1.2, postcss-url@^7.3.0:
   version "7.3.0"
   resolved "http://registry.npm.taobao.org/postcss-url/download/postcss-url-7.3.0.tgz#cf2f45e06743cf43cfea25309f81cbc003dc783f"
   dependencies:
@@ -5460,10 +5447,6 @@ pretty-error@^2.0.2:
 pretty-hrtime@^1.0.0:
   version "1.0.3"
   resolved "http://registry.npm.taobao.org/pretty-hrtime/download/pretty-hrtime-1.0.3.tgz#b7e3ea42435a4c9b2759d99e0f201eb195802ee1"
-
-private@~0.1.5:
-  version "0.1.8"
-  resolved "http://registry.npm.taobao.org/private/download/private-0.1.8.tgz#2381edb3689f7a53d653190060fcf822d2f368ff"
 
 process-nextick-args@~1.0.6:
   version "1.0.7"
@@ -5651,10 +5634,6 @@ rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-read-file@^0.2.0:
-  version "0.2.0"
-  resolved "http://registry.npm.taobao.org/read-file/download/read-file-0.2.0.tgz#70c6baf8842ec7d1540f981fd0e6aed4c81bd545"
-
 read-pkg-up@^1.0.1:
   version "1.0.1"
   resolved "http://registry.npm.taobao.org/read-pkg-up/download/read-pkg-up-1.0.1.tgz#9d63c13276c065918d57f002a57f40a1b643fb02"
@@ -5723,15 +5702,6 @@ readdirp@^2.0.0:
     minimatch "^3.0.2"
     readable-stream "^2.0.2"
     set-immediate-shim "^1.0.1"
-
-recast@~0.11.12:
-  version "0.11.23"
-  resolved "http://registry.npm.taobao.org/recast/download/recast-0.11.23.tgz#451fd3004ab1e4df9b4e4b66376b2a21912462d3"
-  dependencies:
-    ast-types "0.9.6"
-    esprima "~3.1.0"
-    private "~0.1.5"
-    source-map "~0.5.0"
 
 rechoir@^0.6.2:
   version "0.6.2"
@@ -6008,9 +5978,9 @@ rollup-pluginutils@^2.0.1:
     estree-walker "^0.3.0"
     micromatch "^2.3.11"
 
-rollup@^0.51.0:
-  version "0.51.8"
-  resolved "http://registry.npm.taobao.org/rollup/download/rollup-0.51.8.tgz#58bd0b642885f4770b5f93cc64f14e4233c2236d"
+rollup@^0.53.0:
+  version "0.53.4"
+  resolved "http://registry.npm.taobao.org/rollup/download/rollup-0.53.4.tgz#f92ce56ee1d097ad5b6f13951bc80db5fef18113"
 
 run-queue@^1.0.0, run-queue@^1.0.3:
   version "1.0.3"
@@ -6018,7 +5988,7 @@ run-queue@^1.0.0, run-queue@^1.0.3:
   dependencies:
     aproba "^1.1.1"
 
-rxjs@^5.5.2, rxjs@^5.5.6:
+rxjs@^5.5.0, rxjs@^5.5.2, rxjs@^5.5.6:
   version "5.5.6"
   resolved "http://registry.npm.taobao.org/rxjs/download/rxjs-5.5.6.tgz#e31fb96d6fd2ff1fd84bcea8ae9c02d007179c02"
   dependencies:
@@ -6447,7 +6417,7 @@ source-map@0.1.x:
   dependencies:
     amdefine ">=0.0.4"
 
-source-map@0.5.x, source-map@^0.5.3, source-map@^0.5.6, source-map@~0.5.0, source-map@~0.5.1:
+source-map@0.5.x, source-map@^0.5.3, source-map@^0.5.6, source-map@~0.5.1:
   version "0.5.7"
   resolved "http://registry.npm.taobao.org/source-map/download/source-map-0.5.7.tgz#8a039d2d1021d22d1ea14c80d8ea468ba2ef3fcc"
 
@@ -6793,7 +6763,7 @@ through2@^2.0.0, through2@~2.0.0:
     readable-stream "^2.1.5"
     xtend "~4.0.1"
 
-through@X.X.X, through@~2.3.6:
+through@X.X.X:
   version "2.3.8"
   resolved "http://registry.npm.taobao.org/through/download/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
 
@@ -6910,21 +6880,6 @@ trim-right@^1.0.1:
   dependencies:
     glob "^6.0.4"
 
-ts-node@^3.0.4:
-  version "3.3.0"
-  resolved "http://registry.npm.taobao.org/ts-node/download/ts-node-3.3.0.tgz#c13c6a3024e30be1180dd53038fc209289d4bf69"
-  dependencies:
-    arrify "^1.0.0"
-    chalk "^2.0.0"
-    diff "^3.1.0"
-    make-error "^1.1.1"
-    minimist "^1.2.0"
-    mkdirp "^0.5.1"
-    source-map-support "^0.4.0"
-    tsconfig "^6.0.0"
-    v8flags "^3.0.0"
-    yn "^2.0.0"
-
 ts-node@~3.2.0:
   version "3.2.2"
   resolved "http://registry.npm.taobao.org/ts-node/download/ts-node-3.2.2.tgz#bbd28e38af4aaa3e96076c466e1b220197c1a3ce"
@@ -6946,15 +6901,6 @@ tsconfig@^6.0.0:
   dependencies:
     strip-bom "^3.0.0"
     strip-json-comments "^2.0.0"
-
-tsickle@^0.21.0:
-  version "0.21.6"
-  resolved "http://registry.npm.taobao.org/tsickle/download/tsickle-0.21.6.tgz#53b01b979c5c13fdb13afb3fb958177e5991588d"
-  dependencies:
-    minimist "^1.2.0"
-    mkdirp "^0.5.1"
-    source-map "^0.5.6"
-    source-map-support "^0.4.2"
 
 tsickle@^0.26.0:
   version "0.26.0"
@@ -7290,7 +7236,7 @@ vinyl-fs@^0.3.0:
     through2 "^0.6.1"
     vinyl "^0.4.0"
 
-vinyl-fs@^2.2.1, vinyl-fs@^2.4.4:
+vinyl-fs@^2.2.1:
   version "2.4.4"
   resolved "http://registry.npm.taobao.org/vinyl-fs/download/vinyl-fs-2.4.4.tgz#be6ff3270cb55dfd7d3063640de81f25d7532239"
   dependencies:

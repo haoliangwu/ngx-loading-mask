@@ -3,7 +3,7 @@ import { Config } from './model/config'
 
 export const DEFAULT_CONFIG: Config = {
   snippet: {
-    imgUrl: '/assets/ripple.svg',
+    imgUrl: null,
     size: 144
   },
   mask: {
