@@ -3,16 +3,18 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
-  <!-- <ngx-loading-snip></ngx-loading-snip> -->
   <div class="wrapper" ngxLoadingMask>
     <button (click)="togglePending('default_mask_group')">default</button>
-    <!-- <button (click)="toggleDone('default_mask_group')">default done</button>
-    <button (click)="toggleError('default_mask_group')">default error</button> -->
+    <ng-template #mask>
+      <div style="text-align: center;">
+        <img [attr.src]="'/assets/ripple.svg'" style="width: 144px; height: 144px;">
+        <div>
+          <span>loading...</span>
+        </div>
+      </div>
+    </ng-template>
   </div>
   <div class="wrapper" [ngxLoadingMask]="'foo'">
     <button (click)="togglePending('foo', 'some error happened')">foo</button>
-    <!-- <button (click)="toggleDone('foo')">foo done</button>
-    <button (click)="toggleError('foo')">foo error</button> -->
   </div>
 </div>
-

@@ -1,4 +1,4 @@
-import { Directive, Input, ComponentFactoryResolver, ApplicationRef, Injector, Host, ElementRef, Inject } from '@angular/core'
+import { Directive, Input, ComponentFactoryResolver, ApplicationRef, Injector, Host, ElementRef, Inject, ContentChild, TemplateRef } from '@angular/core'
 import { LoadingMaskService } from './loading-mask.service'
 import { OnInit, OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks'
 import { Subscription } from 'rxjs/Subscription'
@@ -15,7 +15,6 @@ import { Config } from './model/config'
 import { CONFIG } from './config'
 import { logGroupStatus } from './utils/log'
 
-
 @Directive({
   selector: '[ngxLoadingMask]',
   exportAs: 'mask'
@@ -23,6 +22,7 @@ import { logGroupStatus } from './utils/log'
 export class LoadingMaskDirective implements OnInit, OnDestroy {
   @Input() public ngxLoadingMask: string
   public isDefault = false
+  @ContentChild('mask') public maskTplRef: TemplateRef<any>
 
   private loadingEvent$: Observable<LoadingEvent>
   private subscription: Subscription
