@@ -4,7 +4,7 @@ import { LoadingMaskGroupMap, LoadingMaskGroup } from './model/mask'
 import { BehaviorSubject } from 'rxjs/BehaviorSubject'
 import { LoadingEvent, LoadingStatus } from './model/event'
 import { Observable } from 'rxjs/Observable'
-import { filter, tap } from 'rxjs/operators'
+import { filter } from 'rxjs/operators'
 
 export const DEFAULT_MASK_GROUP = 'default_mask_group'
 
@@ -25,7 +25,6 @@ export class LoadingMaskService {
 
   subscribe(groupName: string = DEFAULT_MASK_GROUP): Observable<LoadingEvent> {
     return this.loadingEvent$.pipe(
-      tap(e => console.log(e.id)),
       filter(e => e.id === groupName)
     )
   }
@@ -75,6 +74,13 @@ export class LoadingMaskService {
    */
   isDefaultGroup(groupName: string): boolean {
     return groupName === DEFAULT_MASK_GROUP
+  }
+
+  /*
+   * if group has been done status
+   */
+  isDoneGroup(group: LoadingMaskGroup): boolean {
+    return group.done === group.pending
   }
 
   /*

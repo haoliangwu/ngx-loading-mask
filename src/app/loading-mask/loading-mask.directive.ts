@@ -1,4 +1,4 @@
-import { Directive, Input, ComponentFactoryResolver, ApplicationRef, Injector, Host, ElementRef } from '@angular/core'
+import { Directive, Input, ComponentFactoryResolver, ApplicationRef, Injector, Host, ElementRef, Inject } from '@angular/core'
 import { LoadingMaskService } from './loading-mask.service'
 import { OnInit, OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks'
 import { Subscription } from 'rxjs/Subscription'
@@ -11,6 +11,9 @@ import { LoadingSnipComponent } from './loading-snip.component'
 import { catchError, tap, flatMap } from 'rxjs/operators'
 import { of } from 'rxjs/observable/of'
 import { empty } from 'rxjs/observable/empty'
+import { Config } from './model/config'
+import { CONFIG } from './config'
+import { logGroupStatus } from './utils/log'
 
 
 @Directive({
@@ -30,14 +33,13 @@ export class LoadingMaskDirective implements OnInit, OnDestroy {
   private portalHostEl: HTMLElement
 
   constructor(
+    @Inject(CONFIG) private config: Config,
     private service: LoadingMaskService,
     private componentFactoryResolver: ComponentFactoryResolver,
     private appRef: ApplicationRef,
     private injector: Injector,
     @Host() private el: ElementRef
-  ) {
-    this.handleEvent = this.handleEvent.bind(this)
-  }
+  ) { }
 
   ngOnInit() {
     this.group = this.service.register(this.ngxLoadingMask)
@@ -59,7 +61,7 @@ export class LoadingMaskDirective implements OnInit, OnDestroy {
     this.subscription = this.loadingEvent$.pipe(
       flatMap(e => {
         return of(e).pipe(
-          tap(this.handleEvent),
+          tap(t => this.handleEvent(t)),
           catchError((err, source) => {
             console.error(err)
             return empty()
@@ -76,21 +78,51 @@ export class LoadingMaskDirective implements OnInit, OnDestroy {
   handleEvent(e: LoadingEvent) {
     switch (e.status) {
       case LoadingStatus.PENDING:
-        console.log('pending', this.group.id)
-        this.reveal()
+        this.group.pending++
+        if (this.group.isError) this.group.isError = false
+
+        if (this.config.debug) {
+          logGroupStatus(this.group, LoadingStatus.PENDING)
+        }
+
+        if (this.portalHost.hasAttached()) return
+        else this.reveal()
+
         break
       case LoadingStatus.DONE:
-        console.log('done', this.group.id)
-        this.hide()
+        this.group.done++
+
+        if (this.config.debug) {
+          logGroupStatus(this.group, LoadingStatus.DONE)
+        }
+
+        if (this.service.isDoneGroup(this.group)) {
+          this.group.done = 0
+          this.group.pending = 0
+
+          this.hide()
+        }
+
         break
       case LoadingStatus.ERROR:
-        console.log('error', this.group.id)
+        this.group.done = 0
+        this.group.pending = 0
+
+        this.group.isError = true
+
+        if (this.config.debug) {
+          logGroupStatus(this.group, LoadingStatus.ERROR)
+        }
+
         this.hideError(e.data)
+
         break
     }
   }
 
   reveal() {
+    // TODO track https://github.com/angular/material2/issues/8628
+    // this.portalHost.attachComponentPortal(this.loadingSnipPortal)
     this.portalHost.attach(this.loadingSnipPortal)
   }
 

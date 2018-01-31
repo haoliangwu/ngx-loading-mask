@@ -15,5 +15,6 @@ export interface MaskConfig {
 export interface Config {
   snippet?: SnippetConfig
   mask?: MaskConfig,
-  clsMapping?: ClsMapping
+  clsMapping?: ClsMapping,
+  debug?: boolean
 }

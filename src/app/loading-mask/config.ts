@@ -12,7 +12,8 @@ export const DEFAULT_CONFIG: Config = {
   clsMapping: {
     mask: 'ngx-loading-mask',
     snip: 'ngx-loading-snip'
-  }
+  },
+  debug: false
 }
 
 export const CONFIG = new InjectionToken<Config>('ngx.loadingMask.config')
