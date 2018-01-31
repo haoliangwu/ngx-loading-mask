@@ -23,14 +23,12 @@ import { LoadingMaskService } from './loading-mask.service'
 })
 export class LoadingMaskModule {
   static forRoot(config: Config): ModuleWithProviders {
-    config = Object.assign(DEFAULT_CONFIG, config)
-
     return {
       ngModule: LoadingMaskModule,
       providers: [
         LoadingMaskService,
         {
-          useValue: config,
+          useValue: Object.assign(DEFAULT_CONFIG, config),
           provide: CONFIG
         }
       ]

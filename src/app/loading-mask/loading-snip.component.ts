@@ -39,7 +39,7 @@ export class LoadingSnipComponent implements OnInit {
 
   constructor(
     @Inject(CONFIG) private config: Config,
-    private mask: LoadingMaskDirective
+    public mask: LoadingMaskDirective
   ) { }
 
   ngOnInit() {

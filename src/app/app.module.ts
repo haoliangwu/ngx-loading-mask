@@ -9,7 +9,6 @@ import { NgZorroAntdModule } from 'ng-zorro-antd'
 import { LoadingMaskModule } from './loading-mask/loading-mask.module';
 import { SafePipe } from './safe.pipe'
 
-
 @NgModule({
   declarations: [
     AppComponent,
