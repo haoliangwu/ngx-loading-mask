@@ -9,4 +9,4 @@ Angular 5+ simple loading-mask ui component.
 * [x] mask container directive
 * [x] events observable
 * [x] ember layout support 
-* [] httpClient interceptor integrate
+* [ ] httpClient interceptor integrate
