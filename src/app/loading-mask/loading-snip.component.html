@@ -1,9 +1,0 @@
-<div class="loading-mask-base" [ngClass]="maskCls" [ngStyle]="maskStyle">
-  <div class="loading-snip-base" [ngClass]="snipCls">
-    <img *ngIf="!mask.maskTplRef" [attr.src]="imgUrl" [ngStyle]="snipStyle"/>
-    <ng-container *ngIf="mask.maskTplRef">
-        <ng-container *ngTemplateOutlet="mask.maskTplRef">
-        </ng-container>
-      </ng-container>
-  </div>
-</div>
