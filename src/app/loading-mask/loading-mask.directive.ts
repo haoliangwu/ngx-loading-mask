@@ -12,7 +12,7 @@ import { catchError, tap, flatMap } from 'rxjs/operators'
 import { of } from 'rxjs/observable/of'
 import { empty } from 'rxjs/observable/empty'
 import { Config } from './model/config'
-import { CONFIG } from './config'
+import { CONFIG, DEFAULT_CONFIG } from './config'
 import { logGroupStatus } from './utils/log'
 
 @Directive({
@@ -43,6 +43,8 @@ export class LoadingMaskDirective implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.group = this.service.register(this.ngxLoadingMask)
+
+    this.config = Object.assign(DEFAULT_CONFIG, this.config)
 
     const { id } = this.group
 

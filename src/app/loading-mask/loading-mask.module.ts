@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common'
 import { LoadingSnipComponent } from './loading-snip.component'
 import { LoadingMaskDirective } from './loading-mask.directive'
 import { Config } from './model/config'
-import { CONFIG, DEFAULT_CONFIG } from './config'
+import { CONFIG } from './config'
 import { LoadingMaskService } from './loading-mask.service'
 
 @NgModule({
@@ -28,7 +28,7 @@ export class LoadingMaskModule {
       providers: [
         LoadingMaskService,
         {
-          useValue: Object.assign(DEFAULT_CONFIG, config),
+          useValue: config,
           provide: CONFIG
         }
       ]

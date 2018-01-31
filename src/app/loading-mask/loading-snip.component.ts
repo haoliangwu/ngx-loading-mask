@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, ViewEncapsulation } from '@angular/core'
 import { ClsMapping, Config } from './model/config'
-import { CONFIG } from './config'
+import { CONFIG, DEFAULT_CONFIG } from './config'
 import { LoadingMaskDirective } from './loading-mask.directive'
 
 @Component({
@@ -43,6 +43,8 @@ export class LoadingSnipComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.config = Object.assign(DEFAULT_CONFIG, this.config)
+
     this.cls = this.config.clsMapping
     this.imgUrl = this.config.snippet.imgUrl
     this.size = this.config.snippet.size
