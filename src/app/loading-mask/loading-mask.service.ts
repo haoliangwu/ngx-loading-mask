@@ -1,10 +1,10 @@
-import { Injectable} from '@angular/core'
+import { Injectable } from '@angular/core'
 import { LoadingMaskGroupMap, LoadingMaskGroup } from './model/mask'
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject'
 import { LoadingEvent, LoadingStatus } from './model/event'
 import { Observable } from 'rxjs/Observable'
-import { filter } from 'rxjs/operators'
+import { filter, tap } from 'rxjs/operators'
 
 export const DEFAULT_MASK_GROUP = 'default_mask_group'
 
@@ -25,6 +25,7 @@ export class LoadingMaskService {
 
   subscribe(groupName: string = DEFAULT_MASK_GROUP): Observable<LoadingEvent> {
     return this.loadingEvent$.pipe(
+      tap(e => console.log(e.id)),
       filter(e => e.id === groupName)
     )
   }

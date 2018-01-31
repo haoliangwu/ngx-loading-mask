@@ -8,6 +8,9 @@ import { LoadingMaskGroup } from './model/mask'
 
 import { ComponentPortal, DomPortalHost } from '@angular/cdk/portal'
 import { LoadingSnipComponent } from './loading-snip.component'
+import { catchError, tap, flatMap } from 'rxjs/operators'
+import { of } from 'rxjs/observable/of'
+import { empty } from 'rxjs/observable/empty'
 
 
 @Directive({
@@ -53,8 +56,17 @@ export class LoadingMaskDirective implements OnInit, OnDestroy {
       this.appRef,
       this.injector)
 
-    this.subscription = this.loadingEvent$
-      .subscribe(this.handleEvent)
+    this.subscription = this.loadingEvent$.pipe(
+      flatMap(e => {
+        return of(e).pipe(
+          tap(this.handleEvent),
+          catchError((err, source) => {
+            console.error(err)
+            return empty()
+          })
+        )
+      }))
+      .subscribe()
   }
 
   ngOnDestroy() {
