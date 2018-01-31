@@ -46,7 +46,7 @@ export class LoadingMaskDirective implements OnInit, OnDestroy {
 
     this.config = Object.assign(DEFAULT_CONFIG, this.config)
 
-    this.preloadImage()
+    this.service.preloadImage()
 
     const { id } = this.group
 
@@ -77,13 +77,6 @@ export class LoadingMaskDirective implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe()
-  }
-
-  private preloadImage() {
-    const { snippet: { imgUrl } } = this.config
-
-    const img: HTMLImageElement = new Image()
-    img.src = imgUrl
   }
 
   private handleEvent(e: LoadingEvent) {

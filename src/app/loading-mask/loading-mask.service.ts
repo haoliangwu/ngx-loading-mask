@@ -1,15 +1,18 @@
-import { Injectable } from '@angular/core'
+import { Injectable, Inject } from '@angular/core'
 import { LoadingMaskGroupMap, LoadingMaskGroup } from './model/mask'
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject'
 import { LoadingEvent, LoadingStatus } from './model/event'
 import { Observable } from 'rxjs/Observable'
 import { filter } from 'rxjs/operators'
+import { Config } from './model/config'
+import { CONFIG } from './config'
 
 export const DEFAULT_MASK_GROUP = 'default_mask_group'
 
 @Injectable()
 export class LoadingMaskService {
+  private isSnipPreload = false
   private uuid = 1
   private maskGroupMap: LoadingMaskGroupMap
 
@@ -19,6 +22,7 @@ export class LoadingMaskService {
   })
 
   constructor(
+    @Inject(CONFIG) private config: Config
   ) {
     this.bootstrap()
   }
@@ -131,6 +135,29 @@ export class LoadingMaskService {
 
   hideGroupError(groupName: string = DEFAULT_MASK_GROUP, error: any) {
     this.loadingEvent$.next(this.loadingEventFactory(groupName, LoadingStatus.ERROR, error))
+  }
+
+  preloadImage() {
+    if (this.isSnipPreload) return
+
+    const { snippet: { imgUrl } } = this.config
+
+    console.group('starting preload snip image from:', imgUrl)
+    this.isSnipPreload = true
+
+    const img: HTMLImageElement = new Image()
+    img.src = imgUrl
+    img.onload = () => {
+      console.log('preloaded sucessfully')
+      console.groupEnd()
+      this.isSnipPreload = true
+    }
+
+    img.onerror = () => {
+      console.log('preloaded met some error')
+      console.groupEnd()
+      this.isSnipPreload = false
+    }
   }
 
   private bootstrap(): void {
