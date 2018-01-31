@@ -46,6 +46,8 @@ export class LoadingMaskDirective implements OnInit, OnDestroy {
 
     this.config = Object.assign(DEFAULT_CONFIG, this.config)
 
+    this.preloadImage()
+
     const { id } = this.group
 
     this.isDefault = this.service.isDefaultGroup(id)
@@ -77,7 +79,14 @@ export class LoadingMaskDirective implements OnInit, OnDestroy {
     this.subscription.unsubscribe()
   }
 
-  handleEvent(e: LoadingEvent) {
+  private preloadImage() {
+    const { snippet: { imgUrl } } = this.config
+
+    const img: HTMLImageElement = new Image()
+    img.src = imgUrl
+  }
+
+  private handleEvent(e: LoadingEvent) {
     switch (e.status) {
       case LoadingStatus.PENDING:
         this.group.pending++
