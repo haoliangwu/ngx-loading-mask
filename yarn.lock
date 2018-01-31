@@ -33,7 +33,7 @@
   dependencies:
     tslib "^1.7.1"
 
-"@angular/cdk@^5.1.1":
+"@angular/cdk@^5.0.0", "@angular/cdk@^5.1.1":
   version "5.1.1"
   resolved "http://registry.npm.taobao.org/@angular/cdk/download/@angular/cdk-5.1.1.tgz#a278b44ec02145a4691aa466dde06a1ae8c0fe88"
   dependencies:
@@ -3934,6 +3934,10 @@ mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkd
   dependencies:
     minimist "0.0.8"
 
+moment@^2.18.1:
+  version "2.20.1"
+  resolved "http://registry.npm.taobao.org/moment/download/moment-2.20.1.tgz#d6eb1a46cbcc14a2b2f9434112c1ff8907f313fd"
+
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "http://registry.npm.taobao.org/move-concurrently/download/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
@@ -4015,6 +4019,14 @@ ng-packagr@^1.6.0:
     ts-node "^3.0.4"
     uglify-js "^3.0.7"
     vinyl-fs "^2.4.4"
+
+ng-zorro-antd@^0.6.13:
+  version "0.6.13"
+  resolved "http://registry.npm.taobao.org/ng-zorro-antd/download/ng-zorro-antd-0.6.13.tgz#db1031b7d034a710be9b2019b7f31fff3e1520a5"
+  dependencies:
+    "@angular/cdk" "^5.0.0"
+    moment "^2.18.1"
+    tslib "^1.7.1"
 
 no-case@^2.2.0:
   version "2.3.2"

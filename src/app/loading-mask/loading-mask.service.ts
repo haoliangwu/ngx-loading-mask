@@ -23,10 +23,14 @@ export class LoadingMaskService {
     this.bootstrap()
   }
 
-  subscribe(groupName: string = DEFAULT_MASK_GROUP): Observable<LoadingEvent> {
-    return this.loadingEvent$.pipe(
-      filter(e => e.id === groupName)
-    )
+  subscribe(groupName?: string): Observable<LoadingEvent> {
+    if (!!groupName) {
+      return this.loadingEvent$.pipe(
+        filter(e => e.id === groupName)
+      )
+    } else {
+      return this.loadingEvent$.asObservable()
+    }
   }
 
   /*

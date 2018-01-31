@@ -15,7 +15,10 @@
   "ngPackage": {
     "lib": {
       "entryFile": "src/app/loading-mask/loading-mask.module.ts",
-      "languageLevel": [ "dom", "es2017" ]
+      "languageLevel": [
+        "dom",
+        "es2017"
+      ]
     }
   },
   "dependencies": {
@@ -31,6 +34,7 @@
     "@angular/router": "^5.0.0",
     "core-js": "^2.4.1",
     "ng-packagr": "^1.6.0",
+    "ng-zorro-antd": "^0.6.13",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.14"
   },

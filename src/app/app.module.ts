@@ -1,16 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { HttpClientModule } from '@angular/common/http'
 
 import { AppComponent } from './app.component'
-import { LoadingMaskModule } from './loading-mask/loading-mask.module'
+import { NgZorroAntdModule } from 'ng-zorro-antd'
+import { LoadingMaskModule } from './loading-mask/loading-mask.module';
+import { SafePipe } from './safe.pipe'
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    NgZorroAntdModule.forRoot(),
     LoadingMaskModule.forRoot({
       snippet: {
         imgUrl: '/assets/ripple.svg',
