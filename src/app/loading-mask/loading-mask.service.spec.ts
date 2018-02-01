@@ -3,6 +3,7 @@ import { TestBed, inject } from '@angular/core/testing'
 import { LoadingMaskService } from './loading-mask.service'
 import { LoadingMaskModule } from './index'
 import { take } from 'rxjs/operators/take'
+import { LoadingEvent, LoadingStatus } from './model/event'
 
 describe('LoadingMaskService', () => {
   beforeEach(() => {
@@ -108,10 +109,11 @@ describe('LoadingMaskService', () => {
   it('should emit pending event', inject([LoadingMaskService], (service: LoadingMaskService) => {
     service.subscribe('foo').pipe(
       take(1)
-    ).subscribe(e => {
+    ).subscribe((e: LoadingEvent) => {
+
       expect(e).toEqual({
         id: 'foo',
-        status: 'pending',
+        status: LoadingStatus.PENDING,
         data: undefined
       })
     })
@@ -122,10 +124,10 @@ describe('LoadingMaskService', () => {
   it('should emit done event', inject([LoadingMaskService], (service: LoadingMaskService) => {
     service.subscribe('foo').pipe(
       take(1)
-    ).subscribe(e => {
+    ).subscribe((e: LoadingEvent) => {
       expect(e).toEqual({
         id: 'foo',
-        status: 'done',
+        status: LoadingStatus.DONE,
         data: undefined
       })
     })
@@ -136,10 +138,10 @@ describe('LoadingMaskService', () => {
   it('should emit error event', inject([LoadingMaskService], (service: LoadingMaskService) => {
     service.subscribe('foo').pipe(
       take(1)
-    ).subscribe(e => {
+    ).subscribe((e: LoadingEvent) => {
       expect(e).toEqual({
         id: 'foo',
-        status: 'error',
+        status: LoadingStatus.ERROR,
         data: 'error message'
       })
     })
