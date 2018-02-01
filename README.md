@@ -1,5 +1,5 @@
 # NgxLoadingMask
-Angular 5+ simple loading-mask ui component.
+Angular 5+ simple loading-mask ui component. [DEMO](http://littlelyon.com/ngx-loading-mask/)
 
 ## Todo
 * [x] global config
