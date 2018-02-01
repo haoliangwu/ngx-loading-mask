@@ -8,6 +8,7 @@ import { AppComponent } from './app.component'
 import { NgZorroAntdModule } from 'ng-zorro-antd'
 import { LoadingMaskModule } from './loading-mask/loading-mask.module'
 import { SafePipe } from './safe.pipe'
+import { HttpService } from './http.service'
 
 @NgModule({
   declarations: [
@@ -29,7 +30,9 @@ import { SafePipe } from './safe.pipe'
       debug: true
     })
   ],
-  providers: [],
+  providers: [
+    HttpService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

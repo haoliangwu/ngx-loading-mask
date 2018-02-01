@@ -1,10 +1,11 @@
 import { Component, ViewEncapsulation } from '@angular/core'
-import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { HttpHeaders } from '@angular/common/http'
 
 import { LoadingMaskService, DEFAULT_MASK_GROUP } from './loading-mask/loading-mask.service'
 import { FormGroup, FormBuilder } from '@angular/forms'
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks'
 import { skip } from 'rxjs/operators'
+import { HttpService } from './http.service'
 
 @Component({
   selector: 'ngx-root',
@@ -31,7 +32,7 @@ export class AppComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     public service: LoadingMaskService,
-    private httpClient: HttpClient
+    private httpClient: HttpService
   ) { }
 
   ngOnInit() {
@@ -114,10 +115,10 @@ export class AppComponent implements OnInit {
   requestMockData(groupName: string) {
     this.logs.push(`emit <span class="highlight">${groupName}</span> group a request mock data task`)
 
-    this.httpClient.get('/assets/mock-data.json', {
-      headers: new HttpHeaders().set('X-Loading-Mask', groupName)
-    }).subscribe(e => {
-      console.log(e)
-    })
+    this.httpClient.withLoadingMask(groupName)
+      .get('/assets/mock-data.json')
+      .subscribe(e => {
+        console.log(e)
+      })
   }
 }
