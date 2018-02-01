@@ -6,9 +6,7 @@ import { LoadingEvent, LoadingStatus } from './model/event'
 import { Observable } from 'rxjs/Observable'
 import { filter } from 'rxjs/operators'
 import { Config } from './model/config'
-import { CONFIG } from './config'
-
-export const DEFAULT_MASK_GROUP = 'default_mask_group'
+import { CONFIG, DEFAULT_MASK_GROUP } from './config'
 
 @Injectable()
 export class LoadingMaskService {

@@ -1,7 +1,7 @@
 import { HttpClient, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs/Observable'
-import { DEFAULT_MASK_GROUP } from './loading-mask/loading-mask.service'
+import { DEFAULT_MASK_GROUP, LOADING_MASK_HEADER } from './loading-mask/index'
 
 @Injectable()
 export class HttpService extends HttpClient {
@@ -18,7 +18,7 @@ export class HttpService extends HttpClient {
     return this.addInterceptor({
       intercept(req, next) {
         req = req.clone({
-          setHeaders: { 'X-Loading-Mask': groupName },
+          setHeaders: { [LOADING_MASK_HEADER]: groupName },
         })
         return next.handle(req)
       }

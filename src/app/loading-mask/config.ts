@@ -16,4 +16,8 @@ export const DEFAULT_CONFIG: Config = {
   debug: false
 }
 
+export const LOADING_MASK_HEADER = 'X-Loading-Mask'
+
+export const DEFAULT_MASK_GROUP = 'default_mask_group'
+
 export const CONFIG = new InjectionToken<Config>('ngx.loadingMask.config')

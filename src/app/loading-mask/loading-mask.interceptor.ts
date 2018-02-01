@@ -4,6 +4,7 @@ import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse, Htt
 import { Observable } from 'rxjs/Observable'
 import { LoadingMaskService } from './loading-mask.service'
 import { tap } from 'rxjs/operators'
+import { LOADING_MASK_HEADER } from './config'
 
 @Injectable()
 export class LoadingMaskInterceptor implements HttpInterceptor {
@@ -12,13 +13,13 @@ export class LoadingMaskInterceptor implements HttpInterceptor {
   ) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (req.headers.has('X-Loading-Mask')) {
+    if (req.headers.has(LOADING_MASK_HEADER)) {
       // TODO use custom header as custom metadata, maybe deprecated in the future
       // refer to https://github.com/angular/angular/issues/18155
-      const groupName = req.headers.get('X-Loading-Mask')
+      const groupName = req.headers.get(LOADING_MASK_HEADER)
 
       req = req.clone({
-        headers: req.headers.delete('X-Loading-Mask')
+        headers: req.headers.delete(LOADING_MASK_HEADER)
       })
 
       this.service.showGroup(groupName)

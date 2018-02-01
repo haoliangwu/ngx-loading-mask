@@ -1,11 +1,11 @@
 import { Component, ViewEncapsulation } from '@angular/core'
-import { HttpHeaders } from '@angular/common/http'
 
-import { LoadingMaskService, DEFAULT_MASK_GROUP } from './loading-mask/loading-mask.service'
+import { LoadingMaskService } from './loading-mask/loading-mask.service'
 import { FormGroup, FormBuilder } from '@angular/forms'
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks'
 import { skip } from 'rxjs/operators'
 import { HttpService } from './http.service'
+import { DEFAULT_MASK_GROUP } from './loading-mask/index'
 
 @Component({
   selector: 'ngx-root',
