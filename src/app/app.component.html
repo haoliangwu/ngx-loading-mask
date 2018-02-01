@@ -1,17 +1,26 @@
 <nz-layout class="layout">
   <nz-header>
-    <h1>
-      NgxLaodingMask
-    </h1>
+    <div nz-row>
+      <div nz-col [nzSpan]="12">
+        <h1>
+          NgxLoadingMask
+        </h1>
+      </div>
+      <div nz-col [nzSpan]="12" style="text-align: right;">
+        <a class="github-button" href="https://github.com/haoliangwu/ngx-loading-mask/issues" data-icon="octicon-issue-opened" aria-label="Issue haoliangwu/ngx-loading-mask on GitHub">Issue</a>
+        <a class="github-button" href="https://github.com/haoliangwu/ngx-loading-mask" data-icon="octicon-star" data-show-count="true"
+          aria-label="Star haoliangwu/ngx-loading-mask on GitHub">Star</a>
+      </div>
+    </div>
   </nz-header>
   <nz-content style="padding:0 50px;" ngxLoadingMask>
     <div nz-row class="mock-control">
-      <div nz-col [nzSpan]="11">
+      <div nz-col [nzSpan]="12">
         <h2>Mock Control Panel</h2>
         <br>
         <form nz-form [nzType]="'horizontal'" [formGroup]="validateForm">
           <div nz-form-item nz-row>
-            <div nz-form-label nz-col [nzSpan]="4">
+            <div nz-form-label nz-col [nzSpan]="6">
               <label nz-form-item-required>Select</label>
             </div>
             <div nz-form-control nz-col [nzSpan]="14">
@@ -23,28 +32,37 @@
             </div>
           </div>
           <div nz-form-item nz-row>
-            <div nz-form-label nz-col [nzSpan]="4">
-              <label>Timeout</label>
+            <div nz-form-label nz-col [nzSpan]="6">
+              <label>Reqest Mock Data</label>
             </div>
             <div nz-form-control nz-col [nzSpan]="14">
-              <nz-slider formControlName="timeout" [nzMin]="1" [nzMax]="5" [nzMarks]="timeoutMarks"></nz-slider>
+              <nz-switch formControlName="isData"></nz-switch>
+              <div *ngIf="isData" nz-form-extra>For obvious effect, maybe need throttling network by devTool</div>
             </div>
           </div>
           <div nz-form-item nz-row>
-            <div nz-form-label nz-col [nzSpan]="4">
+            <div nz-form-label nz-col [nzSpan]="6">
+              <label>Timeout</label>
+            </div>
+            <div nz-form-control nz-col [nzSpan]="14">
+              <nz-slider [nzDisabled]="isData" formControlName="timeout" [nzMin]="1" [nzMax]="5" [nzMarks]="timeoutMarks"></nz-slider>
+            </div>
+          </div>
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSpan]="6">
               <label>Count</label>
             </div>
             <div nz-form-control nz-col [nzSpan]="14">
-              <nz-input-number formControlName="count" [nzSize]="'large'" [nzStep]="1" [nzMax]="5" [nzMin]="1"></nz-input-number>
+              <nz-input-number [nzDisabled]="isData" formControlName="count" [nzSize]="'large'" [nzStep]="1" [nzMax]="5" [nzMin]="1"></nz-input-number>
               <span nz-form-text> mock requests</span>
             </div>
           </div>
           <div nz-form-item nz-row>
-            <div nz-form-label nz-col [nzSpan]="4">
+            <div nz-form-label nz-col [nzSpan]="6">
               <label>Error Type</label>
             </div>
             <div nz-form-control nz-col [nzSpan]="14">
-              <nz-switch formControlName="isError"></nz-switch>
+              <nz-switch [nzDisabled]="isData" formControlName="isError"></nz-switch>
             </div>
           </div>
           <div nz-form-item nz-row *ngIf="isError">
@@ -56,14 +74,14 @@
             </div>
           </div>
           <div nz-form-item nz-row>
-            <div nz-form-control nz-col [nzSpan]="12" [nzOffset]="6">
-              <button nz-button [nzType]="'primary'" (click)="toggle()">Emit</button>
+            <div nz-form-control nz-col [nzSpan]="18" [nzOffset]="6">
+              <button nz-button [nzType]="'primary'" (click)="toggle()">Emit Mock Event</button>
             </div>
           </div>
         </form>
       </div>
       <div nz-col [nzSpan]="2"></div>
-      <div nz-col [nzSpan]="11" class="logs">
+      <div nz-col [nzSpan]="10" class="logs">
         <h2>Request Logs</h2>
         <br>
         <div *ngFor="let log of logs" [innerHTML]="log | safeHtml">

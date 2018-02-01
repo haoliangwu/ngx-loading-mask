@@ -1,4 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
+
 import { LoadingMaskService, DEFAULT_MASK_GROUP } from './loading-mask/loading-mask.service'
 import { FormGroup, FormBuilder } from '@angular/forms'
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks'
@@ -14,6 +16,7 @@ export class AppComponent implements OnInit {
   title = 'ngx-loading-mask'
   validateForm: FormGroup
   isError = false
+  isData = false
   defaultGroup = DEFAULT_MASK_GROUP
   logs: string[] = []
 
@@ -27,12 +30,14 @@ export class AppComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    public service: LoadingMaskService
+    public service: LoadingMaskService,
+    private httpClient: HttpClient
   ) { }
 
   ngOnInit() {
     this.validateForm = this.fb.group({
       zone: [DEFAULT_MASK_GROUP],
+      isData: [false],
       isError: [false],
       errorMessage: ['foo'],
       timeout: [1],
@@ -44,11 +49,18 @@ export class AppComponent implements OnInit {
         this.isError = e
       })
 
+    this.validateForm.get('isData').valueChanges
+      .subscribe(e => {
+        this.isData = e
+      })
+
     this.service.subscribe()
-    .pipe(skip(1))
-    .subscribe(e => {
-      this.logs.push(`<span class="highlight">${e.id}</span> group in <span class="highlight">${e.status}</span> status`)
-    })
+      .pipe(skip(1))
+      .subscribe(e => {
+        const timestamp = this.isData ? `at ${new Date().getTime()}` : ''
+
+        this.logs.push(`<span class="highlight">${e.id}</span> group in <span class="highlight">${e.status}</span> status ${timestamp}`)
+      })
   }
 
   toggle() {
@@ -57,14 +69,18 @@ export class AppComponent implements OnInit {
     const count = this.validateForm.get('count').value
     const groupName = this.validateForm.get('zone').value
 
-    this.togglePending(groupName, 0)
+    if (this.isData) {
+      this.requestMockData(groupName)
+    } else {
+      this.togglePending(groupName, 0)
 
-    for (let i = 0; i < count - 1; i++) {
-      const delay = Math.random() * 3
+      for (let i = 0; i < count - 1; i++) {
+        const delay = Math.random() * 3
 
-      setTimeout(() => {
-        this.togglePending(groupName, delay)
-      }, delay * 1000)
+        setTimeout(() => {
+          this.togglePending(groupName, delay)
+        }, delay * 1000)
+      }
     }
   }
 
@@ -93,5 +109,15 @@ export class AppComponent implements OnInit {
 
   toggleDoneWithError(groupName: string, error) {
     this.service.hideGroupError(groupName, error)
+  }
+
+  requestMockData(groupName: string) {
+    this.logs.push(`emit <span class="highlight">${groupName}</span> group a request mock data task`)
+
+    this.httpClient.get('/assets/mock-data.json', {
+      headers: new HttpHeaders().set('X-Loading-Mask', groupName)
+    }).subscribe(e => {
+      console.log(e)
+    })
   }
 }

@@ -5,6 +5,8 @@ import { LoadingMaskDirective } from './loading-mask.directive'
 import { Config } from './model/config'
 import { CONFIG } from './config'
 import { LoadingMaskService } from './loading-mask.service'
+import { HTTP_INTERCEPTORS } from '@angular/common/http'
+import { LoadingMaskInterceptor } from './loading-mask.interceptor'
 
 @NgModule({
   imports: [
@@ -30,6 +32,11 @@ export class LoadingMaskModule {
         {
           useValue: config,
           provide: CONFIG
+        },
+        {
+          provide: HTTP_INTERCEPTORS,
+          useClass: LoadingMaskInterceptor,
+          multi: true,
         }
       ]
     }
