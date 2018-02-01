@@ -1,11 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing'
 
 import { LoadingMaskService } from './loading-mask.service'
+import { LoadingMaskModule } from './index'
+import { take } from 'rxjs/operators/take'
 
 describe('LoadingMaskService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [LoadingMaskService]
+      imports: [
+        LoadingMaskModule.forRoot({})
+      ]
     })
   })
 
@@ -99,5 +103,47 @@ describe('LoadingMaskService', () => {
       isError: false,
       instances: 1
     })
+  }))
+
+  it('should emit pending event', inject([LoadingMaskService], (service: LoadingMaskService) => {
+    service.subscribe('foo').pipe(
+      take(1)
+    ).subscribe(e => {
+      expect(e).toEqual({
+        id: 'foo',
+        status: 'pending',
+        data: undefined
+      })
+    })
+
+    service.showGroup('foo')
+  }))
+
+  it('should emit done event', inject([LoadingMaskService], (service: LoadingMaskService) => {
+    service.subscribe('foo').pipe(
+      take(1)
+    ).subscribe(e => {
+      expect(e).toEqual({
+        id: 'foo',
+        status: 'done',
+        data: undefined
+      })
+    })
+
+    service.hideGroup('foo')
+  }))
+
+  it('should emit error event', inject([LoadingMaskService], (service: LoadingMaskService) => {
+    service.subscribe('foo').pipe(
+      take(1)
+    ).subscribe(e => {
+      expect(e).toEqual({
+        id: 'foo',
+        status: 'error',
+        data: 'error message'
+      })
+    })
+
+    service.hideGroupError('foo', 'error message')
   }))
 })

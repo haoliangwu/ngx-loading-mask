@@ -1,7 +1,7 @@
 # NgxLoadingMask
 Angular 5+ simple loading-mask ui component. [DEMO](http://littlelyon.com/ngx-loading-mask/)
 
-## Todo
+## Todos
 * [x] global config
 * [x] customizable loading snippet comp
   * [x] with global config
@@ -10,8 +10,8 @@ Angular 5+ simple loading-mask ui component. [DEMO](http://littlelyon.com/ngx-lo
 * [x] events observable
 * [x] ember layout support 
 * [x] httpClient interceptor integrate
-* [ ] docs
-* [ ] unit-test cases
+* [x] docs
+* [x] unit-test cases
 
 ## Install
 > ``npm install ngx-loading-mask --save``
