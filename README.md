@@ -9,7 +9,7 @@ Angular 5+ simple loading-mask ui component.
 * [x] mask container directive
 * [x] events observable
 * [x] ember layout support 
-* [ ] httpClient interceptor integrate
+* [x] httpClient interceptor integrate
 * [ ] docs
 * [ ] unit-test cases
 
@@ -36,7 +36,7 @@ imports: [
   * mask(string): loading mask class suffix, default: ``ngx-loading-mask`` 
 * debug(boolean): toggle debug mode, default: ``false``
 
-## Usage
+## Basic Usage
 ### global loading mask
 just declare ``[ngxLoadingMask]`` into your app container element or ``body``
 ```
@@ -63,6 +63,50 @@ this.service.showGroup(groupName)
 this.toggleDone(groupName)
 ```
 if groupName is ``undefined``, the default value of it was global loading mask group name, for sake of toggling local mask, you need assign local group name to it, like ``foo`` or something else.
+
+## Advance Usage
+In above section, the code style was imperative. If you want more declarative, we can use Angular ``httpClient`` interceptor feature.
+
+Note: Until now, Angular ``httpClient`` api all have string type constraint, that means cannot patch custom metadata param into ``options``, this library used ``custom-header`` instead.
+
+### use Angular httpClient service
+with origin ``httpClient`` service, it is easy to patch ``headers``
+```
+http
+  .post('/api/somthing/', body, {
+    headers: new HttpHeaders().set('X-Loading-Mask', 'foo'),
+  })
+  .subscribe();
+```
+the loading mask metadata is bind to ``X-Loading-Mask`` key of the headers. The key has been exported as constant(LOADING_MASK_HEADER) of the module entry.
+
+### use custom service extends httpClient
+above code is relly ugly due to we must set ``HttpHeader`` manually but we only take care which loading mask should be toggle on during request process. The code could be more declarative by extending default ``httpClient`` service class and providing other custom api on it, something like
+```
+export class HttpService extends HttpClient {
+  ...
+
+  withLoadingMask(groupName: string = DEFAULT_MASK_GROUP): HttpService {
+    return this.addInterceptor({
+      intercept(req, next) {
+        req = req.clone({
+          setHeaders: { [LOADING_MASK_HEADER]: groupName },
+        })
+        return next.handle(req)
+      }
+    })
+  }
+
+  ...
+}
+```
+then you can use it as 
+```
+http.withLoadingMask('foo')
+  .post('/api/somthing/', body)
+  .subscribe();
+```
+see whole example in [HERE](https://github.com/haoliangwu/ngx-loading-mask/tree/master/src/app/http.service.ts)
 
 ## API
 ### [ngxLoadingMask]
