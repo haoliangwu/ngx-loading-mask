@@ -1,8 +1,8 @@
 import { Directive, Input, ComponentFactoryResolver, ApplicationRef, Injector, Host, ElementRef, Inject, ContentChild, TemplateRef } from '@angular/core'
 import { LoadingMaskService } from './loading-mask.service'
 import { OnInit, OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks'
-import { Subscription } from 'rxjs/Subscription'
 import { Observable } from 'rxjs/Observable'
+import { Subscription } from 'rxjs/Subscription'
 import { LoadingEvent, LoadingStatus } from './model/event'
 import { LoadingMaskGroup } from './model/mask'
 
@@ -38,7 +38,7 @@ export class LoadingMaskDirective implements OnInit, OnDestroy {
     private componentFactoryResolver: ComponentFactoryResolver,
     private appRef: ApplicationRef,
     private injector: Injector,
-    @Host() private el: ElementRef
+    @Host() public el: ElementRef
   ) { }
 
   ngOnInit() {
