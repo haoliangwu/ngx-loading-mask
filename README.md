@@ -1,5 +1,5 @@
 # NgxLoadingMask
-Angular 5+ simple loading-mask ui component. [DEMO](http://littlelyon.com/ngx-loading-mask/)
+Angular 5+ simple loading-mask ui component. [DEMO][demo]
 
 ## Todos
 * [x] global config
@@ -112,6 +112,19 @@ see whole example in [HERE](https://github.com/haoliangwu/ngx-loading-mask/tree/
 ### [ngxLoadingMask]
 * ngxLoadingMask(string): loading mask group name, if null, use default global loading mask gorup name instead.
 
+### #mask
+mask template var, could assign custom loading spin template with it, for example:
+```
+<div ngxLoadingMask>
+  <ng-template #mask *ngIf="isCustom">
+    <h1>
+      {{customMessage}}...(global)
+    </h1>
+  </ng-template>
+</div> 
+```
+the ``ng-template`` override the default loading spin template, see more in [DEMO][demo] site.
+
 ### LoadingMaskService
 #### subscribe(groupName?: string): Observable<LoadingEvent>
 get the loading mask events Observable corresponding to groupName, if groupName is undefined, will listen to all events
@@ -142,3 +155,6 @@ register loading mask group instance
 
 #### unregister(groupName: string)
 unregister loading mask group instance
+
+
+[demo]: http://littlelyon.com/ngx-loading-mask/

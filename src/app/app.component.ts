@@ -18,6 +18,8 @@ export class AppComponent implements OnInit {
   validateForm: FormGroup
   isError = false
   isData = false
+  isCustom = false
+  customMessage = 'custom loading template'
   defaultGroup = DEFAULT_MASK_GROUP
   logs: string[] = []
 
@@ -40,10 +42,22 @@ export class AppComponent implements OnInit {
       zone: [DEFAULT_MASK_GROUP],
       isData: [false],
       isError: [false],
+      isCustom: [false],
+      customMessage: [this.customMessage],
       errorMessage: ['foo'],
       timeout: [1],
       count: [1]
     })
+
+    this.validateForm.get('customMessage').valueChanges
+      .subscribe(e => {
+        this.customMessage = e
+      })
+
+    this.validateForm.get('isCustom').valueChanges
+      .subscribe(e => {
+        this.isCustom = e
+      })
 
     this.validateForm.get('isError').valueChanges
       .subscribe(e => {

@@ -14,6 +14,11 @@
     </div>
   </nz-header>
   <nz-content style="padding:0 50px;" ngxLoadingMask>
+    <ng-template #mask *ngIf="isCustom">
+      <h1>
+        {{customMessage}}...(global)
+      </h1>
+    </ng-template>
     <div nz-row class="mock-control">
       <div nz-col [nzSpan]="12">
         <h2>Mock Control Panel</h2>
@@ -38,6 +43,21 @@
             <div nz-form-control nz-col [nzSpan]="14">
               <nz-switch formControlName="isData"></nz-switch>
               <div *ngIf="isData" nz-form-extra>For obvious effect, maybe need throttling network by devTool</div>
+            </div>
+          </div>
+          <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSpan]="6">
+              <label>Use Custom Template</label>
+            </div>
+            <div nz-form-control nz-col [nzSpan]="14">
+              <div nz-row>
+                <div nz-col [nzSpan]="4">
+                  <nz-switch formControlName="isCustom"></nz-switch>
+                </div>
+                <div nz-col *ngIf="isCustom" [nzSpan]="20">
+                  <nz-input [nzSize]="'large'" formControlName="customMessage" [nzId]="'customMessage'"></nz-input>
+                </div>
+              </div>
             </div>
           </div>
           <div nz-form-item nz-row>
@@ -91,10 +111,20 @@
     <div nz-row class="zone-wrapper">
       <div class="zone" nz-col [nzSpan]="11" [ngxLoadingMask]="'zone1'">
         <h1>zone1</h1>
+        <ng-template #mask *ngIf="isCustom">
+          <h1>
+            {{customMessage}}...(zone1)
+          </h1>
+        </ng-template>
       </div>
       <div nz-col [nzSpan]="2"></div>
       <div class="zone" nz-col [nzSpan]="11" [ngxLoadingMask]="'zone2'">
         <h1>zone2</h1>
+        <ng-template #mask *ngIf="isCustom">
+          <h1>
+            {{customMessage}}...(zone2)
+          </h1>
+        </ng-template>
       </div>
     </div>
   </nz-content>
