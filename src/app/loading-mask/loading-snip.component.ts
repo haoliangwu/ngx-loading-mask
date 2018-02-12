@@ -10,14 +10,12 @@ import { LoadingMaskDirective } from './loading-mask.directive'
   styleUrls: ['./loading-snip.component.scss']
 })
 export class LoadingSnipComponent implements OnInit {
-  private cls: ClsMapping
-
   imgUrl: string
   size: number
   bgColor: string
 
   get maskCls() {
-    return [this.cls.mask, this.mask.isDefault ? 'global' : '']
+    return [this.config.clsMapping.mask, this.mask.isDefault ? 'global' : '']
   }
 
   get maskStyle() {
@@ -27,7 +25,7 @@ export class LoadingSnipComponent implements OnInit {
   }
 
   get snipCls() {
-    return this.cls.snip
+    return this.config.clsMapping.snip
   }
 
   get snipStyle() {
@@ -45,7 +43,6 @@ export class LoadingSnipComponent implements OnInit {
   ngOnInit() {
     this.config = Object.assign(DEFAULT_CONFIG, this.config)
 
-    this.cls = this.config.clsMapping
     this.imgUrl = this.config.snippet.imgUrl
     this.size = this.config.snippet.size
     this.bgColor = this.config.mask.bgColor
