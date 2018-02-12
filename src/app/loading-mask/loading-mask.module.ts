@@ -26,7 +26,7 @@ import { LoadingMaskInterceptor } from './loading-mask.interceptor'
 export class LoadingMaskModule {
   static forRoot(config: Config): ModuleWithProviders {
     const configFactory = () => {
-      return Object.assign(DEFAULT_CONFIG, config)
+      return {...DEFAULT_CONFIG, ...config}
     }
 
     return {

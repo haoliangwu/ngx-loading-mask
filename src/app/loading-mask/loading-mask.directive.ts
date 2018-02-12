@@ -48,10 +48,6 @@ export class LoadingMaskDirective implements OnInit, OnDestroy {
 
     const { id } = this.group
 
-    this.isDefault = this.service.isDefaultGroup(id)
-    this.loadingEvent$ = this.service.subscribe(id)
-
-    this.loadingSnipPortal = new ComponentPortal(LoadingSnipComponent)
     this.portalHostEl = this.service.isDefaultGroup(id) ? document.body : this.el.nativeElement
 
     this.portalHost = new DomPortalHost(
@@ -59,6 +55,11 @@ export class LoadingMaskDirective implements OnInit, OnDestroy {
       this.componentFactoryResolver,
       this.appRef,
       this.injector)
+
+    this.loadingSnipPortal = new ComponentPortal(LoadingSnipComponent)
+
+    this.isDefault = this.service.isDefaultGroup(id)
+    this.loadingEvent$ = this.service.subscribe(id)
 
     this.subscription = this.loadingEvent$.pipe(
       flatMap(e => {
@@ -125,7 +126,12 @@ export class LoadingMaskDirective implements OnInit, OnDestroy {
   reveal() {
     // TODO track https://github.com/angular/material2/issues/8628
     // this.portalHost.attachComponentPortal(this.loadingSnipPortal)
-    this.portalHost.attach(this.loadingSnipPortal)
+
+    const component = this.portalHost.attach(this.loadingSnipPortal)
+
+    // need detect chagnes manually for ExpressionChangedAfterItHasBeenCheckedError error
+    // don't figure out the reason, maybe the root cause was cdk inject component outside angular scope
+    component.changeDetectorRef.detectChanges()
   }
 
   hide() {
