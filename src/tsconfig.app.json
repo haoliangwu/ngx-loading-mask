@@ -9,6 +9,5 @@
   "exclude": [
     "test.ts",
     "**/*.spec.ts"
-  ],
-  "noUnusedLocals": false
+  ]
 }

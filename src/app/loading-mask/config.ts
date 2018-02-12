@@ -1,5 +1,5 @@
 import { InjectionToken } from '@angular/core'
-import { Config } from './model/config'
+import { Config, ClsMapping, MaskConfig, SnippetConfig } from './model/config'
 
 export const DEFAULT_CONFIG: Config = {
   snippet: {
@@ -21,3 +21,9 @@ export const LOADING_MASK_HEADER = 'X-Loading-Mask'
 export const DEFAULT_MASK_GROUP = 'default_mask_group'
 
 export const CONFIG = new InjectionToken<Config>('ngx.loadingMask.config')
+
+export const CUSTOM_CONFIG = new InjectionToken<Config>('ngx.loadingMask.custom.config')
+
+export const configFactory = function (config: Config) {
+  return { ...DEFAULT_CONFIG, ...config }
+}
