@@ -140,7 +140,7 @@ export class LoadingMaskService {
 
     const { snippet: { imgUrl } } = this.config
 
-    if (!!imgUrl) {
+    if (!imgUrl) {
       console.log('preloaded abort due to nil uri')
       this.isSnipPreload = true
       return
