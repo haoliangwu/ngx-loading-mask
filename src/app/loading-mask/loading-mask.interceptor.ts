@@ -18,25 +18,29 @@ export class LoadingMaskInterceptor implements HttpInterceptor {
       // refer to https://github.com/angular/angular/issues/18155
       const groupName = req.headers.get(LOADING_MASK_HEADER)
 
-      req = req.clone({
-        headers: req.headers.delete(LOADING_MASK_HEADER)
-      })
+      if (!!groupName) {
+        // req = req.clone({
+        //   headers: req.headers.delete(LOADING_MASK_HEADER)
+        // })
 
-      this.service.showGroup(groupName)
+        this.service.showGroup(groupName)
 
-      return next.handle(req).pipe(
-        tap(event => {
-          if (event instanceof HttpResponse) {
-            // TODO hide mask here
-            this.service.hideGroup(groupName)
-          }
-        }, error => {
-          if (error instanceof HttpErrorResponse) {
-            // TODO hide mask with error here
-            this.service.hideGroupError(groupName, error)
-          }
-        })
-      )
+        return next.handle(req).pipe(
+          tap(event => {
+            if (event instanceof HttpResponse) {
+              // TODO hide mask here
+              this.service.hideGroup(groupName)
+            }
+          }, error => {
+            if (error instanceof HttpErrorResponse) {
+              // TODO hide mask with error here
+              this.service.hideGroupError(groupName, error)
+            }
+          })
+        )
+      } else {
+        return next.handle(req)
+      }
     } else {
       return next.handle(req)
     }
