@@ -133,6 +133,12 @@ export class LoadingMaskService {
 
   hideGroupError(groupName: string = DEFAULT_MASK_GROUP, error: any) {
     this.loadingEvent$.next(this.loadingEventFactory(groupName, LoadingStatus.ERROR, error))
+
+    throw new Error(error)
+  }
+
+  resetGroup(groupName: string = DEFAULT_MASK_GROUP) {
+    this.loadingEvent$.next(this.loadingEventFactory(groupName, LoadingStatus.INIT))
   }
 
   preloadImage() {

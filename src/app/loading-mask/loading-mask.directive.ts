@@ -103,7 +103,7 @@ export class LoadingMaskDirective implements OnInit, OnDestroy {
           this.group.done = 0
           this.group.pending = 0
 
-          this.hide()
+          this.service.resetGroup(this.group.id)
         }
 
         break
@@ -118,7 +118,11 @@ export class LoadingMaskDirective implements OnInit, OnDestroy {
         }
 
         this.hideError(e.data)
+        this.service.resetGroup(this.group.id)
 
+        break
+      case LoadingStatus.INIT:
+        if (this.portalHost.hasAttached()) this.hide()
         break
     }
   }
@@ -141,6 +145,6 @@ export class LoadingMaskDirective implements OnInit, OnDestroy {
   hideError(error: any) {
     this.hide()
 
-    throw new Error(error)
+    // throw new Error(error)
   }
 }

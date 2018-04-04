@@ -2,7 +2,7 @@ export enum LoadingStatus {
   INIT = '__init__',
   PENDING = 'pending',
   DONE = 'done',
-  ERROR = 'error'
+  ERROR = 'error',
 }
 
 export interface LoadingEvent {
