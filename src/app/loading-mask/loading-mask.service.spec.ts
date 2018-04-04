@@ -146,6 +146,20 @@ describe('LoadingMaskService', () => {
       })
     })
 
-    service.hideGroupError('foo', 'error message')
+    expect(() => service.hideGroupError('foo', 'error message')).toThrowError('error message')
+  }))
+
+  it('should emit reset event', inject([LoadingMaskService], (service: LoadingMaskService) => {
+    service.subscribe('foo').pipe(
+      take(1)
+    ).subscribe((e: LoadingEvent) => {
+      expect(e).toEqual({
+        id: 'foo',
+        status: LoadingStatus.INIT,
+        data: undefined
+      })
+    })
+
+    service.resetGroup('foo')
   }))
 })
