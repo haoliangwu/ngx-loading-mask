@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "package": "ng-packagr -p package.json",
-    "deploy:doc": "ng build --prod --deploy-url http://littlelyon.com/ngx-loading-mask/ && gulp deploy"
+    "deploy:doc": "ng build --prod --deploy-url https://haoliangwu.github.io/ngx-loading-mask/ && gulp deploy"
   },
   "private": false,
   "ngPackage": {
