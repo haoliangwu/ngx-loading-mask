@@ -117,7 +117,7 @@ export class LoadingMaskDirective implements OnInit, OnDestroy {
           logGroupStatus(this.group, LoadingStatus.ERROR)
         }
 
-        this.hideError(e.data)
+        this.hideError(e)
         this.service.resetGroup(this.group.id)
 
         break
@@ -142,9 +142,10 @@ export class LoadingMaskDirective implements OnInit, OnDestroy {
     this.portalHost.detach()
   }
 
-  hideError(error: any) {
+  hideError(e: LoadingEvent) {
     this.hide()
-
-    // throw new Error(error)
+    console.group(`force hide ${e.id} due to:`)
+    console.error(e.data)
+    console.groupEnd()
   }
 }

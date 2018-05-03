@@ -24,7 +24,7 @@ import { HttpService } from './http.service'
     NgZorroAntdModule.forRoot(),
     LoadingMaskModule.forRoot({
       snippet: {
-        imgUrl: 'http://littlelyon.com/ngx-loading-mask/assets/ripple.svg',
+        imgUrl: 'http://haoliangwu.github.io/ngx-loading-mask/assets/ripple.svg',
         size: 144
       },
       debug: true
