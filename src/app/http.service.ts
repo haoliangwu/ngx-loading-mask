@@ -1,6 +1,6 @@
 import { HttpClient, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http'
 import { Injectable } from '@angular/core'
-import { Observable } from 'rxjs/Observable'
+import { Observable } from 'rxjs'
 import { DEFAULT_MASK_GROUP, LOADING_MASK_HEADER } from './loading-mask/index'
 
 @Injectable()

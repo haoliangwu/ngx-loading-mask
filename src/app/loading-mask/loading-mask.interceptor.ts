@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse, HttpErrorResponse } from '@angular/common/http'
 
-import { Observable } from 'rxjs/Observable'
+import { Observable } from 'rxjs'
 import { LoadingMaskService } from './loading-mask.service'
 import { tap } from 'rxjs/operators'
 import { LOADING_MASK_HEADER } from './config'

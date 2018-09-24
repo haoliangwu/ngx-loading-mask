@@ -1,16 +1,13 @@
 import { Directive, Input, ComponentFactoryResolver, ApplicationRef, Injector, Host, ElementRef, Inject, ContentChild, TemplateRef } from '@angular/core'
 import { LoadingMaskService } from './loading-mask.service'
 import { OnInit, OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks'
-import { Observable } from 'rxjs/Observable'
-import { Subscription } from 'rxjs/Subscription'
+import { Observable, Subscription, of, EMPTY } from 'rxjs'
 import { LoadingEvent, LoadingStatus } from './model/event'
 import { LoadingMaskGroup } from './model/mask'
 
 import { ComponentPortal, DomPortalHost } from '@angular/cdk/portal'
 import { LoadingSnipComponent } from './loading-snip.component'
 import { catchError, tap, flatMap } from 'rxjs/operators'
-import { of } from 'rxjs/observable/of'
-import { empty } from 'rxjs/observable/empty'
 import { Config } from './model/config'
 import { CONFIG } from './config'
 import { logGroupStatus } from './utils/log'
@@ -67,7 +64,7 @@ export class LoadingMaskDirective implements OnInit, OnDestroy {
           tap(t => this.handleEvent(t)),
           catchError((err, source) => {
             console.error(err)
-            return empty()
+            return EMPTY
           })
         )
       }))

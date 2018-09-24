@@ -1,9 +1,8 @@
 import { Injectable, Inject } from '@angular/core'
 import { LoadingMaskGroupMap, LoadingMaskGroup } from './model/mask'
 
-import { BehaviorSubject } from 'rxjs/BehaviorSubject'
+import { BehaviorSubject, Observable } from 'rxjs'
 import { LoadingEvent, LoadingStatus } from './model/event'
-import { Observable } from 'rxjs/Observable'
 import { filter } from 'rxjs/operators'
 import { Config } from './model/config'
 import { CONFIG, DEFAULT_MASK_GROUP } from './config'
