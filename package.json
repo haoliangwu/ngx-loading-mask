@@ -1,6 +1,6 @@
 {
   "name": "ngx-loading-mask",
-  "version": "5.3.3",
+  "version": "6.1.8",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
